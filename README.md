@@ -4,8 +4,9 @@ A protocol to enable the exchange of goods and services related to Synthetic Bio
 
 ## Overview
 
-* [High level design](docs/high-level.md)
+* [High level Components](docs/high-level.md)
 * [Contracts](docs/contracts.md)
+  * [Exchange](docs/exchange.md)
 * Indexer
 * Client API
 * UI
