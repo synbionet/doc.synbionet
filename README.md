@@ -11,3 +11,6 @@ A protocol to enable the exchange of goods and services related to Synthetic Bio
 * Client API
 * UI
 * DAO
+
+## Proposals
+* [Metadata and Specifications](proposals/metadata.md)
