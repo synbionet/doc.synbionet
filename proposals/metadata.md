@@ -2,7 +2,7 @@
 
 **WORK IN PROGRESS**
 
-Many facets of the system need to track URI links to external data for information such as name, description, other links, etc.... This document outlines some of the JSON schema need for that information.
+Many facets of the system need to track URI links to external data for information such as name, description, other links, etc.... This document outlines some of the JSON schema needed for that information.
 
 ## Service metadata
 A service should contain a URI to a json document describing the service.  This information can be used to populate the UI.
@@ -39,12 +39,12 @@ A service should contain a URI to a json document describing the service.  This 
 }
 ```
 
-## InputSpecifiation
-Is a JSON schema document used to capture the required input of a service. This can be used to generate a input form in the UI or used for integrate with other APIs.
+## Input Specification
+A JSON schema document used to capture the required input of a service. This can be used to generate a input form in the UI or used to integrate with other APIs.
 
 ### Example Schema
 
-For example, here's how you may define the input specification for a service that performs protein expression and purification
+For example, here's how you might define the input specification for a service that performs protein expression and purification
 ```json
 {
     "name": "Service Specification",
@@ -96,5 +96,5 @@ For example, here's how you may define the input specification for a service tha
 }
 ```
 
-The output of completing this form in the UI will be json formated.
+The output format from completing this form in the UI will be json.
 
