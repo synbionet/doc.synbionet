@@ -1,25 +1,59 @@
-# High Level Design
+# Bionet
 
-<img src="../img/bionet-key-components.svg" alt= “” width="600" height="400">
+```mermaid
+graph LR;
+    Users-->UI["@synbionet/ui"];
+    UI-->API["@synbionet/api"];
+    API--> Contracts["@synbionet/fair-exchange"];
+    Contracts-->DAO
+    Contracts-->Exchange
+    Contracts-->Service
+    Contracts-->Registry
+    Contracts-->Actors
+    Contracts-->Reputation
+    API-->DS["Decentralized Storage"];
+    API-->MarketDataStorage["@synbionet/market"]
+    MarketDataStorage-->DB["relational database"]
+    MarketDataStorage-->Indexer["@synbionet/indexer"]
+    Indexer-->Ethereum
+    Exchange-->Ethereum
+    DAO-->Ethereum
+    Actors-->Ethereum
+    Service-->Ethereum
+    Registry-->Ethereum
+    Reputation-->Ethereum
+```
 
-Bionet consists of several architecture components:
+**Key Components:**
 
-## dApp UI
+## @synbionet/ui
 A React SPA user-interface to the Bionet.
 
-## dApp Indexer
-Webserver with an API used by the UI to provide information to the user. This includes a process that listens for specific Ethereum events to store in 'metadata'.   Future version will most likely use 'the graph' protocol and node.
+## @synbionet/api
+A typescript API used to simplify interacting with key components.
 
-## Metadata
-The simplest possible database needed to store information for the dApp UI/Indexer. In a perfect dApp you wouldn't want a centralized DB. 
+## @synbionet/fair-exchange
+Core smart contract protocol
 
-## Storage
-Decentralized storage used to store information related to services: *terms and conditions, description, licensing*, etc... This may be IPFS or Arweave.
+## @synbionet/market
+Bionet operated web application to collect data and provide information to the UI
 
-## Ethereum/Contracts
-A set of smart contracts on Ethereum that define the core protocol.  [Read more](contracts.md)
+## @synbionet/indexer
+Monitors Ethereum for bionet related events and stores in `@synbionet/market` database.
+Future versions will likely use 'the graph' protocol.
 
-## Sign in with Ethereum (SIWE)
-Users will use their Ethereum wallet to authenticate to the system. Only vetted Bionet users can access the initial Bionet. SIWE requires digital signatures from the user's wallet.  The signature proves ownership of the wallet and associated address. The address is compared against vetted (authorized) user addresses.
+
+## Contract Architecture
+The smart contracts of the system are architected with a [Diamond Pattern](https://eips.ethereum.org/EIPS/eip-2535). This pattern is used to allow upgrades, improve storage, and make it easier to track events emitted by the system.  While several contracts (or facets) are deployed, they're all accessed through the single address of the core `diamond` contract. 
+
+```mermaid
+graph LR;
+    User-->Diamond
+    Diamond-->ExchangeFacet
+    Diamond-->ServiceFacet
+    Diamond--> Others...
+```
+
+
 
 

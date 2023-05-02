@@ -1,6 +1,6 @@
-# Smart Contract Protocol
+# Fair Exchange Smart Contract Protocol
 
-The protocol is designed to enable the exchange of goods and services on the Bionet. In general, you can think of it as an escrow service, or trusted "middle-man", that ensures fees and assets are distributed as expected to the parties involved in an exchange. It uses incentives to encourage participants to follow the rules of the system to enforce atomic exchanges where either both parties get what they expect, or none do.
+The protocol is designed to enable the exchange of goods and services on the Bionet. In general, you can think of it as an escrow service, or trusted "middle-man", that ensures fees and assets are distributed as expected to the parties in an exchange. It uses incentives to encourage participants to follow the rules of the system to enforce atomic exchanges where either both parties get what they expect, or none do.
 
 Our current effort is focused on a minimal viable product (MVP). We're intentionally keeping the core logic as simple as possible as we work through the needs of the Synthetic Biology (SynBio) community.
 
@@ -11,9 +11,9 @@ erDiagram
     BionetDAO ||--|| Treasury: manages
     BionetDAO ||--|| Registry: manages
     Registry ||--|{ Actor: whitelists
-    Actor ||--|{ Service: offer
+    Actor ||--|{ Service: offer_or_purchase
     Actor ||--|| Reputation: maintains
-    Service ||--|{ Exchange: creates
+    Service ||--|{ Exchange: sale
 ```
 
 ## Description
